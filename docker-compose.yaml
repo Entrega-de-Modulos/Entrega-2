@@ -3,7 +3,13 @@ services:
     build: gateway/
     ports:
       - "8080:8080"
+    environment:
+      - JWT_SECRET=4TU9XNvwlLf6jNqyBi3QCqEYp76EXKK0rOjLLnZozumoRSx7MRSzWBREcjgbqcOJ
+      - AUTH_SERVICE_URL=http://auth-service:8080
+      - PROTECTED_SERVICE_URL=http://protected-service:8080
   auth-service:
     build: auth-service/
+    environment:
+      - JWT_SECRET=4TU9XNvwlLf6jNqyBi3QCqEYp76EXKK0rOjLLnZozumoRSx7MRSzWBREcjgbqcOJ
   protected-service:
     build: protected-service/
